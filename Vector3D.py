@@ -1,7 +1,6 @@
 class Vector3D():
-    x, y, z = (0.0, 0.0, 0.0)
 
-    def __init__(self, x, y, z):
+    def __init__(self, x=0.0, y=0.0, z=0.0):
         self.x = x
         self.y = y
         self.z = z
@@ -25,6 +24,33 @@ class Vector3D():
         y = self.y * vector.getY()
         z = self.z * vector.getZ()
         return Vector3D(x, y, z)
+
+    def __add__(self, vector):
+        return self.scalarAddition(vector)
+
+    def __div__(self, vector):
+        return self.scalarDivision(vector)
+
+    def scalarDivision(self, vector):
+        try:
+            self.x /= vector.getX()
+        except:
+            pass
+        try:
+            self.y /= vector.getY()
+        except:
+            pass
+        try:
+            self.z /= vector.getZ()
+        except:
+            pass
+        return self
+
+    def scalarAddition(self, vector):
+        self.x += vector.getX()
+        self.y += vector.getY()
+        self.z += vector.getZ()
+        return self
 
     def derivate(self, vector, dt):
         self.x = self.x + dt * vector.getX()

@@ -2,8 +2,7 @@ from .. Vector3D import Vector3D
 import unittest
 
 
-class Vector3DTest(unittest.TestCase):
-    """docstring for Vector3DTest"""
+class TestVector3D(unittest.TestCase):
 
     def test_vector(self):
         vector = Vector3D(0, 0, 0)
@@ -29,3 +28,18 @@ class Vector3DTest(unittest.TestCase):
 
         vector1 = vector1.derivate(vector2, dt)
         self.assertEqual(str(vector1), str(Vector3D(10.2, 10.2, 30.2)))
+
+    def test_addition(self):
+        vector1 = Vector3D(1, 2, 3)
+        vector2 = Vector3D(3, 2, 1)
+
+        self.assertEqual(str(vector1 + vector2), str(Vector3D(4, 4, 4)))
+
+    def test_division(self):
+        vector1 = Vector3D(4, 6, 8)
+        vector2 = Vector3D(2, 2, 2)
+
+        self.assertEquals(
+            str(vector1.scalarDivision(vector2)),
+            str(Vector3D(2, 3, 4))
+        )

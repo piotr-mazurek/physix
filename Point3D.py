@@ -1,10 +1,12 @@
-import Vector3D
+from Vector3D import Vector3D
 
 
 class Point3D():
-    position = Vector3D
-    velocity = Vector3D
-    mass = 1.0
+
+    def __init__(self):
+        self.position = Vector3D(0, 0, 0)
+        self.velocity = Vector3D(0, 0, 0)
+        self.mass = 1.0
 
     def setPosition(self, vector):
         self.position = vector
@@ -17,6 +19,13 @@ class Point3D():
 
     def getVelocity(self):
         return self.velocity
+
+    def move(self, dt):
+        u"""
+        Moves point forward in time by given delta time.
+        :param dt delta time
+        """
+        self.position.derivate(self.velocity, dt)
 
     def __repr__(self):
         return "POSITION [x:%.2f, y:%.2f, z:%.2f], \
