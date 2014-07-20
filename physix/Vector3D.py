@@ -1,3 +1,6 @@
+import math
+
+
 class Vector3D():
 
     def __init__(self, x=0.0, y=0.0, z=0.0):
@@ -52,11 +55,24 @@ class Vector3D():
         self.z += vector.getZ()
         return self
 
+    def getDelta(self, vector):
+        x = vector.getX() - self.x
+        y = vector.getY() - self.y
+        z = vector.getZ() - self.z
+        return Vector3D(x, y, z)
+
     def derivate(self, vector, dt):
         self.x = self.x + dt * vector.getX()
         self.y = self.y + dt * vector.getY()
         self.z = self.z + dt * vector.getZ()
         return self
+
+    def getMagnitude(self):
+        return math.sqrt(
+            self.x * self.x
+            + self.y * self.y
+            + self.z * self.z
+        )
 
     def __repr__(self):
         return "[x:%.2f, y:%.2f, z:%.2f]" % (

@@ -1,4 +1,6 @@
 from Vector3D import Vector3D
+# [[p,p2,p3], quadratic]
+#   quadratic(p, p2)
 
 
 class Point3D():

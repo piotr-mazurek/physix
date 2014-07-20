@@ -1,4 +1,4 @@
-from .. Vector3D import Vector3D
+from Vector3D import Vector3D
 import unittest
 
 
