@@ -109,3 +109,19 @@ class Vector3D():
             self.getY(),
             self.getZ(),
         )
+
+    def __eq__(self, vector):
+        """
+        Overloads equality operator
+        """
+        if not isinstance(vector, self.__class__):
+            return False
+
+        if (
+            self.x == vector.getX()
+            and self.y == vector.getY()
+            and self.z == vector.getZ()
+        ):
+            return True
+        else:
+            return False

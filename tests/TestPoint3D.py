@@ -1,5 +1,5 @@
-from Point3D import Point3D
-from Vector3D import Vector3D
+from ..physix.Point3D import Point3D
+from ..physix.Vector3D import Vector3D
 import unittest
 
 
