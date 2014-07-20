@@ -32,9 +32,9 @@ class Vector3D():
         return self.scalarAddition(vector)
 
     def __div__(self, vector):
-        return self.scalarDivision(vector)
+        return self.vectorDivision(vector)
 
-    def scalarDivision(self, vector):
+    def vectorDivision(self, vector):
         try:
             self.x /= vector.getX()
         except:
@@ -47,6 +47,19 @@ class Vector3D():
             self.z /= vector.getZ()
         except:
             pass
+        return self
+
+    def scalarDivision(self, scalar):
+        if scalar != 0:
+            self.x /= scalar
+            self.y /= scalar
+            self.z /= scalar
+        return self
+
+    def scalarMultiplication(self, scalar):
+        self.x *= scalar
+        self.y *= scalar
+        self.z *= scalar
         return self
 
     def scalarAddition(self, vector):
