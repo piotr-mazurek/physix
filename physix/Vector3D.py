@@ -1,4 +1,5 @@
 import math
+import numbers
 
 
 class Vector3D():
@@ -22,11 +23,26 @@ class Vector3D():
     def getZ(self):
         return self.z
 
-    def __mul__(self, vector):
-        x = self.x * vector.getX()
-        y = self.y * vector.getY()
-        z = self.z * vector.getZ()
-        return Vector3D(x, y, z)
+    def __mul__(self, factor):
+        """
+        If factor is a vector returns product of scalar multiplication.
+        If is a numeric variable returns a new vector.
+        """
+
+        if isinstance(factor, self.__class__):
+            result = (
+                self.x * factor.getX()
+                + self.y * factor.getY()
+                + self.z * factor.getZ()
+            )
+        elif isinstance(factor, numbers.Number):
+            result = self.__class__(
+                self.x * factor,
+                self.y * factor,
+                self.z * factor,
+            )
+
+        return result
 
     def __add__(self, vector):
         return self.scalarAddition(vector)
