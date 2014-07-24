@@ -23,6 +23,15 @@ class Vector3D():
     def getZ(self):
         return self.z
 
+    def setX(self, value):
+        self.x = value
+
+    def setY(self, value):
+        self.y = value
+
+    def setZ(self, value):
+        self.z = value
+
     def __mul__(self, factor):
         """
         If factor is a vector returns product of scalar multiplication.

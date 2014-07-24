@@ -30,11 +30,15 @@ import random as r
 
 #     print point
 #     #vec3D
+p1 = Point3D()
+p2 = Point3D()
+
+p2.setPosition(Vector3D(2, 2, 2))
 
 obj = PhysicalObject()
-obj.addPoint(Point3D())
-obj.addPoint(Point3D())
-
+obj.addPoint(p1)
+obj.addPoint(p2)
+obj.force_function(Vector3D(2, 2, 2))
 # for i in range(10):
 # obj.computeInternalForces()
 

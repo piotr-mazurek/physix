@@ -42,6 +42,11 @@ class Point3D():
         self.acceleration = force_sum / self.mass
         return self
 
+    def removeForces(self):
+        self.forces = []
+        self.acceleration = Vector3D(0, 0, 0)
+        return self
+
     def move(self, dt):
         u"""
         Moves point forward in time by given delta time.
