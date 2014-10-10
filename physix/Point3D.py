@@ -12,28 +12,28 @@ class Point3D():
         self.forces = []
         self.mass = 1.0
 
-    def setPosition(self, vector):
+    def set_position(self, vector):
         self.position = vector
 
-    def getPosition(self):
+    def get_position(self):
         return self.position
 
-    def setVelocity(self, velocity):
+    def set_velocity(self, velocity):
         self.velocity = velocity
 
-    def getVelocity(self):
+    def get_velocity(self):
         return self.velocity
 
-    def setAcceleration(self, acceleration):
+    def set_acceleration(self, acceleration):
         self.acceleration = acceleration
 
-    def getAcceleration(self):
+    def get_acceleration(self):
         return self.acceleration
 
-    def addForce(self, vector):
+    def add_force(self, vector):
         self.forces.append(vector)
 
-    def computeAcceleration(self):
+    def compute_acceleration(self):
         force_sum = Vector3D(0, 0, 0)
         if len(self.forces):
             for force in self.forces:
@@ -42,7 +42,7 @@ class Point3D():
         self.acceleration = force_sum / self.mass
         return self
 
-    def removeForces(self):
+    def remove_forces(self):
         self.forces = []
         self.acceleration = Vector3D(0, 0, 0)
         return self
@@ -58,11 +58,11 @@ class Point3D():
     def __repr__(self):
         return "POSITION [x:%.2f, y:%.2f, z:%.2f], \
             V[x:%.2f, y:%.2f, z:%.2f]" % (
-            self.position.getX(),
-            self.position.getY(),
-            self.position.getZ(),
+            self.position.get_x(),
+            self.position.get_y(),
+            self.position.get_z(),
 
-            self.velocity.getX(),
-            self.velocity.getY(),
-            self.velocity.getZ(),
+            self.velocity.get_x(),
+            self.velocity.get_y(),
+            self.velocity.get_z(),
         )

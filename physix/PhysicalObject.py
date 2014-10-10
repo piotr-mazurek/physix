@@ -25,31 +25,31 @@ class PhysicalObject():
             return abs(result + self.epsilon) * -1
 
     def force_function(self, distance_vector):
-        distance_vector.setX(
-            self.lennard_jones(distance_vector.getX())
+        distance_vector.set_x(
+            self.lennard_jones(distance_vector.get_x())
         )
-        distance_vector.setY(
-            self.lennard_jones(distance_vector.getY())
+        distance_vector.set_y(
+            self.lennard_jones(distance_vector.get_y())
         )
-        distance_vector.setZ(
-            self.lennard_jones(distance_vector.getZ())
+        distance_vector.set_z(
+            self.lennard_jones(distance_vector.get_z())
         )
         return distance_vector
 
-    def addPoint(self, point):
+    def add_point(self, point):
         self.points.append(point)
 
-    def computeInternalForces(self):
+    def compute_internal_forces(self):
         for p1, p2 in combinations(self.points, 2):
-            position1 = p1.getPosition()
-            position2 = p2.getPosition()
-            delta1 = position1.getDelta(position2)
+            position1 = p1.get_position()
+            position2 = p2.get_position()
+            delta1 = position1.get_delta(position2)
             force = self.force_function(delta1)
             force2 = force * -1
-            p1.addForce(force)
-            p2.addForce(force2)
-            p1.computeAcceleration()
-            p2.computeAcceleration()
+            p1.add_force(force)
+            p2.add_force(force2)
+            p1.compute_acceleration()
+            p2.compute_acceleration()
 
     def move(self, dt):
         for point in self.points:
@@ -60,4 +60,4 @@ class PhysicalObject():
 
     def zero_force(self):
         for p in self.points:
-            p.removeForces()
+            p.remove_forces()

@@ -9,27 +9,27 @@ class Vector3D():
         self.y = y
         self.z = z
 
-    def setValues(self, x, y, z):
+    def set_values(self, x, y, z):
         self.x = x
         self.y = y
         self.z = z
 
-    def getX(self):
+    def get_x(self):
         return self.x
 
-    def getY(self):
+    def get_y(self):
         return self.y
 
-    def getZ(self):
+    def get_z(self):
         return self.z
 
-    def setX(self, value):
+    def set_x(self, value):
         self.x = value
 
-    def setY(self, value):
+    def set_y(self, value):
         self.y = value
 
-    def setZ(self, value):
+    def set_z(self, value):
         self.z = value
 
     def __mul__(self, factor):
@@ -40,9 +40,9 @@ class Vector3D():
 
         if isinstance(factor, self.__class__):
             result = (
-                self.x * factor.getX()
-                + self.y * factor.getY()
-                + self.z * factor.getZ()
+                self.x * factor.get_x()
+                + self.y * factor.get_y()
+                + self.z * factor.get_z()
             )
         elif isinstance(factor, numbers.Number):
             result = self.__class__(
@@ -54,58 +54,58 @@ class Vector3D():
         return result
 
     def __add__(self, vector):
-        return self.scalarAddition(vector)
+        return self.scalar_addition(vector)
 
     def __div__(self, vector):
-        return self.vectorDivision(vector)
+        return self.vector_division(vector)
 
-    def vectorDivision(self, vector):
+    def vector_division(self, vector):
         try:
-            self.x /= vector.getX()
+            self.x /= vector.get_x()
         except:
             pass
         try:
-            self.y /= vector.getY()
+            self.y /= vector.get_y()
         except:
             pass
         try:
-            self.z /= vector.getZ()
+            self.z /= vector.get_z()
         except:
             pass
         return self
 
-    def scalarDivision(self, scalar):
+    def scalar_division(self, scalar):
         if scalar != 0:
             self.x /= scalar
             self.y /= scalar
             self.z /= scalar
         return self
 
-    def scalarMultiplication(self, scalar):
+    def scalar_multiplication(self, scalar):
         self.x *= scalar
         self.y *= scalar
         self.z *= scalar
         return self
 
-    def scalarAddition(self, vector):
-        self.x += vector.getX()
-        self.y += vector.getY()
-        self.z += vector.getZ()
+    def scalar_addition(self, vector):
+        self.x += vector.get_x()
+        self.y += vector.get_y()
+        self.z += vector.get_z()
         return self
 
-    def getDelta(self, vector):
-        x = vector.getX() - self.x
-        y = vector.getY() - self.y
-        z = vector.getZ() - self.z
+    def get_delta(self, vector):
+        x = vector.get_x() - self.x
+        y = vector.get_y() - self.y
+        z = vector.get_z() - self.z
         return Vector3D(x, y, z)
 
     def derivate(self, vector, dt):
-        self.x = self.x + dt * vector.getX()
-        self.y = self.y + dt * vector.getY()
-        self.z = self.z + dt * vector.getZ()
+        self.x = self.x + dt * vector.get_x()
+        self.y = self.y + dt * vector.get_y()
+        self.z = self.z + dt * vector.get_z()
         return self
 
-    def getMagnitude(self):
+    def get_magnitude(self):
         return math.sqrt(
             self.x * self.x
             + self.y * self.y
@@ -114,9 +114,9 @@ class Vector3D():
 
     def __repr__(self):
         return "[x:%.2f, y:%.2f, z:%.2f]" % (
-            self.getX(),
-            self.getY(),
-            self.getZ(),
+            self.get_x(),
+            self.get_y(),
+            self.get_z(),
         )
 
     def __eq__(self, vector):
@@ -127,9 +127,9 @@ class Vector3D():
             return False
 
         if (
-            self.x == vector.getX()
-            and self.y == vector.getY()
-            and self.z == vector.getZ()
+            self.x == vector.get_x()
+            and self.y == vector.get_y()
+            and self.z == vector.get_z()
         ):
             return True
         else:
