@@ -8,10 +8,12 @@ class PhysicalObject():
         self.points = []
         self.relations = []
 
-    def force_function(self, distance_vector):
-        u"""Computes force for given distance vector
+    def force_function(self, first_point, second_point):
+        u"""Computes force for given points.
 
         Must be defined for each physical object.
+        Must take two points, and compute force between them.
+        Returns force vector.
         """
         raise NotImplementedError
 
@@ -21,10 +23,7 @@ class PhysicalObject():
     def compute_internal_forces(self):
         u"""Uses force_function to compute all internal forces"""
         for p1, p2 in combinations(self.points, 2):
-            position1 = p1.get_position()
-            position2 = p2.get_position()
-            delta1 = position1.get_delta(position2)
-            force = self.force_function(delta1)
+            force = self.force_function(p1, p2)
             force2 = force * -1
             p1.add_force(force)
             p2.add_force(force2)

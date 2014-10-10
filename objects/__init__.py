@@ -1,0 +1,1 @@
+from SimpleObject import SimpleObject
