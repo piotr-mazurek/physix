@@ -3,43 +3,23 @@ from itertools import combinations
 
 
 class PhysicalObject():
-    epsilon = 0.05
-    rm = 0.8
 
     def __init__(self):
         self.points = []
         self.relations = []
 
-    def lennard_jones(self, distance):
-        try:
-            result = self.epsilon * (
-                (self.rm / float(distance)) ** 12 -
-                2 * (self.rm / float(distance)) ** 6
-            )
-        except ZeroDivisionError:
-            result = 0
-
-        if distance > self.rm:
-            return abs(result + self.epsilon)
-        else:
-            return abs(result + self.epsilon) * -1
-
     def force_function(self, distance_vector):
-        distance_vector.set_x(
-            self.lennard_jones(distance_vector.get_x())
-        )
-        distance_vector.set_y(
-            self.lennard_jones(distance_vector.get_y())
-        )
-        distance_vector.set_z(
-            self.lennard_jones(distance_vector.get_z())
-        )
-        return distance_vector
+        u"""Computes force for given distance vector
+
+        Must be defined for each physical object.
+        """
+        raise NotImplementedError
 
     def add_point(self, point):
         self.points.append(point)
 
     def compute_internal_forces(self):
+        u"""Uses force_function to compute all internal forces"""
         for p1, p2 in combinations(self.points, 2):
             position1 = p1.get_position()
             position2 = p2.get_position()
